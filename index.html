@@ -234,6 +234,16 @@
   .path-head h2{
     font-size:clamp(2rem, 4vw, 2.8rem);
   }
+  .hourglass-heading{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .hourglass-icon{
+    color:var(--sage);
+    flex:0 0 auto;
+    transform:translateY(-2px);
+  }
   .path-note{
     font-size:0.85rem;
     color:var(--ink-soft);
@@ -361,7 +371,7 @@
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#top">Home</a></li>
-      <li><a href="#toolbox">The Clarity Toolbox</a></li>
+      <li><a href="#toolbox">The Cancer Registry Hourglass</a></li>
       <li><a href="#memoir">The Memoir</a></li>
     </ul>
   </nav>
@@ -377,7 +387,7 @@
     <p class="sub">Thirty years in cancer registry. A team built on trust. A story still being written.</p>
 
     <div class="cta-row">
-      <a href="#toolbox" class="btn btn-sage">Enter the Toolbox</a>
+      <a href="#toolbox" class="btn btn-sage">Enter the Hourglass</a>
       <a href="#memoir" class="btn btn-plum">Read the Story</a>
     </div>
   </section>
@@ -392,8 +402,15 @@
     <div class="wrap">
       <span class="eyebrow">For Registrars</span>
       <div class="path-head">
-        <h2>The Clarity Toolbox</h2>
-        <p class="path-note">No logins. No VPN. No hunting across a dozen tabs — just the resources every registrar reaches for, in one place.</p>
+        <h2 class="hourglass-heading">
+          <svg class="hourglass-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 2.5H18C18 6.5 15 9.5 12 11C9 9.5 6 6.5 6 2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M6 21.5H18C18 17.5 15 14.5 12 13C9 14.5 6 17.5 6 21.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M5 2.5H19M5 21.5H19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          The Cancer Registry Hourglass
+        </h2>
+        <p class="path-note">Every resource, narrowed and sorted — so you don't have to.</p>
       </div>
       <p class="path-intro">Built from thirty years of knowing exactly what registrars need, and exactly when they need it. A public, always-open starting point — with more original guides and quick-reference material on the way.</p>
 
@@ -469,7 +486,7 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#toolbox">The Clarity Toolbox</a></li>
+        <li><a href="#toolbox">The Cancer Registry Hourglass</a></li>
         <li><a href="#memoir">The Memoir</a></li>
       </ul>
     </nav>
