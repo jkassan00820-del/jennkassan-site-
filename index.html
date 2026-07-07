@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jenn Kassan — From Chaos to Clarity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEAE1;
+    --paper-deep:#E6DFD1;
+    --ink:#21242E;
+    --ink-soft:#5B5E68;
+    --amber:#C08A2E;
+    --amber-soft:#E4C580;
+    --sage:#4E6B5A;
+    --sage-soft:#CFDBD1;
+    --plum:#7C5468;
+    --plum-soft:#E3D2DA;
+    --line:#D8D0BF;
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:500;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(239,234,225,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .brand span{color:var(--amber);}
+
+  .nav-links{
+    display:flex;
+    gap:36px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size:0.92rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--amber);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    font-size:1.4rem;
+    color:var(--ink);
+    cursor:pointer;
+  }
+
+  @media (max-width:720px){
+    .nav-links{
+      position:absolute;
+      top:68px; left:0; right:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      gap:0;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .nav-links.open{max-height:260px;}
+    .nav-links li{
+      padding:16px 32px;
+      border-top:1px solid var(--line);
+    }
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .dots-row{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    height:28px;
+    margin-bottom:40px;
+  }
+  .dot{
+    width:10px; height:10px;
+    border-radius:50%;
+    flex:0 0 auto;
+    transition:transform 1.1s cubic-bezier(.16,1,.3,1);
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{
+    color:var(--amber);
+    font-style:italic;
+    font-weight:400;
+  }
+  .hero p.sub{
+    max-width:520px;
+    margin:28px 0 0;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+  }
+
+  .cta-row{
+    display:flex;
+    gap:16px;
+    margin-top:44px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 26px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+    border:1px solid transparent;
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-sage{background:var(--sage); color:var(--paper);}
+  .btn-sage:hover{box-shadow:0 8px 20px -8px var(--sage);}
+  .btn-plum{background:transparent; color:var(--plum); border-color:var(--plum);}
+  .btn-plum:hover{box-shadow:0 8px 20px -10px var(--plum);}
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:52px 0;
+  }
+  .intro p{
+    font-size:1.2rem;
+    max-width:760px;
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    line-height:1.55;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section.path{
+    padding:96px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .path-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:48px;
+    flex-wrap:wrap;
+  }
+  .path-head h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+  }
+  .path-note{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    max-width:280px;
+    font-family:'IBM Plex Mono', monospace;
+    line-height:1.5;
+  }
+  .path-intro{
+    max-width:640px;
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    margin-bottom:56px;
+  }
+
+  /* ---------- TOOLBOX ---------- */
+  #toolbox{background:var(--paper-deep);}
+  #toolbox .eyebrow{color:var(--sage);}
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .cat{
+    background:var(--paper-deep);
+    padding:28px 26px;
+  }
+  .cat h3{
+    font-size:1rem;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    color:var(--sage);
+    margin-bottom:16px;
+  }
+  .cat ul{list-style:none; margin:0; padding:0;}
+  .cat li{margin-bottom:10px;}
+  .cat a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color:var(--ink);
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease;
+  }
+  .cat a:hover{border-color:var(--sage);}
+
+  .toolbox-note{
+    margin-top:32px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  /* ---------- MEMOIR ---------- */
+  #memoir .eyebrow{color:var(--plum);}
+  #memoir h2{font-style:italic; font-weight:400;}
+  .memoir-body{
+    max-width:600px;
+  }
+  .memoir-body p{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:300;
+    color:var(--ink);
+    line-height:1.7;
+    margin-bottom:22px;
+  }
+  .memoir-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--plum);
+    border:1px solid var(--plum-soft);
+    background:var(--plum-soft);
+    padding:6px 14px;
+    border-radius:2px;
+    margin-bottom:28px;
+  }
+  .memoir-cta{
+    margin-top:12px;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .memoir-cta a{
+    color:var(--plum);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px 0 64px;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer .brand{font-size:1rem;}
+  footer nav ul{
+    display:flex;
+    gap:26px;
+    list-style:none;
+    padding:0; margin:0;
+    font-size:0.85rem;
+  }
+  footer nav a{text-decoration:none; color:var(--ink-soft);}
+  footer .tagline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">Jenn <span>Kassan</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#toolbox">The Clarity Toolbox</a></li>
+      <li><a href="#memoir">The Memoir</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <div class="dots-row" id="dotsRow" aria-hidden="true"></div>
+
+    <h1>From Chaos<br><span class="accent">to Clarity.</span></h1>
+    <p class="sub">Thirty years in cancer registry. A team built on trust. A story still being written.</p>
+
+    <div class="cta-row">
+      <a href="#toolbox" class="btn btn-sage">Enter the Toolbox</a>
+      <a href="#memoir" class="btn btn-plum">Read the Story</a>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro wrap">
+    <p>I've spent three decades turning scattered data into clean, trustworthy records — as Assistant Director at Penn Medicine Cancer Registry and Senior ODS &amp; Training Lead at NeuralFrame. Somewhere along the way, I learned the same idea applies to people, and to life.</p>
+  </div>
+
+  <!-- TOOLBOX -->
+  <section class="path" id="toolbox">
+    <div class="wrap">
+      <span class="eyebrow">For Registrars</span>
+      <div class="path-head">
+        <h2>The Clarity Toolbox</h2>
+        <p class="path-note">No logins. No VPN. No hunting across a dozen tabs — just the resources every registrar reaches for, in one place.</p>
+      </div>
+      <p class="path-intro">Built from thirty years of knowing exactly what registrars need, and exactly when they need it. A public, always-open starting point — with more original guides and quick-reference material on the way.</p>
+
+      <div class="cat-grid">
+        <div class="cat">
+          <h3>SEER</h3>
+          <ul>
+            <li><a href="https://seer.cancer.gov" target="_blank" rel="noopener">SEER Program</a></li>
+            <li><a href="https://seer.cancer.gov/tools/" target="_blank" rel="noopener">SEER Tools &amp; Manuals</a></li>
+            <li><a href="https://training.seer.cancer.gov" target="_blank" rel="noopener">SEER Training</a></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>AJCC Staging</h3>
+          <ul>
+            <li><a href="https://www.facs.org/quality-programs/cancer-programs/american-joint-committee-on-cancer/" target="_blank" rel="noopener">AJCC Cancer Staging</a></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>NAACCR</h3>
+          <ul>
+            <li><a href="https://www.naaccr.org" target="_blank" rel="noopener">Data Standards &amp; Dictionary</a></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>NCCN Guidelines</h3>
+          <ul>
+            <li><a href="https://www.nccn.org" target="_blank" rel="noopener">NCCN Guidelines</a></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>ICD-O-3</h3>
+          <ul>
+            <li><a href="https://seer.cancer.gov/icd-o-3/" target="_blank" rel="noopener">ICD-O-3 Reference</a></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>NCRA</h3>
+          <ul>
+            <li><a href="https://www.ncra-usa.org" target="_blank" rel="noopener">Professional Development</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toolbox-note">Note: this is a first pass — swap in your preferred links as you finalize the list, and verify each URL before sharing publicly.</p>
+    </div>
+  </section>
+
+  <!-- MEMOIR -->
+  <section class="path" id="memoir">
+    <div class="wrap">
+      <span class="eyebrow">Chasing Chaos, Finding Home</span>
+      <div class="path-head">
+        <h2>A memoir-in-essays, coming soon.</h2>
+      </div>
+
+      <div class="memoir-body">
+        <span class="memoir-tag">In Progress</span>
+        <p>This is a story about losing my mother at three years old, and the long, winding path from chaos to home — through grief, motherhood, and finally understanding my own mind.</p>
+        <p>It's still being written.</p>
+        <p class="memoir-cta">Check back for updates, or <a href="mailto:jenn@jennkassan.com?subject=Keep%20me%20posted">reach out here</a> to be the first to know when it's ready.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>
+      <a href="#top" class="brand">Jenn Kassan</a>
+      <div class="tagline">From Chaos to Clarity</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#toolbox">The Clarity Toolbox</a></li>
+        <li><a href="#memoir">The Memoir</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Signature hero animation: scattered dots settle into a clean row
+  const dotsRow = document.getElementById('dotsRow');
+  const colors = ['#C08A2E', '#4E6B5A', '#7C5468', '#21242E'];
+  const count = 14;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.style.background = colors[i % colors.length];
+    dot.style.opacity = 0.85;
+
+    if (!prefersReduced) {
+      const sx = (Math.random() * 200 - 100).toFixed(0);
+      const sy = (Math.random() * 60 - 30).toFixed(0);
+      const sr = (Math.random() * 180 - 90).toFixed(0);
+      dot.style.transform = `translate(${sx}px, ${sy}px) rotate(${sr}deg) scale(1.3)`;
+      dot.style.transitionDelay = `${i * 28}ms`;
+    }
+    dotsRow.appendChild(dot);
+  }
+
+  if (!prefersReduced) {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        dotsRow.querySelectorAll('.dot').forEach(dot => {
+          dot.style.transform = 'translate(0,0) rotate(0deg) scale(1)';
+        });
+      }, 200);
+    });
+  }
+</script>
+
+</body>
+</html>
